@@ -44,9 +44,12 @@ Write your code using grouping in the chunks below to help answer the following 
 
 ```{r}
 
+impeach %>% 
+  group_by(for_impeachment) %>% 
+  summarise(n())
 
 
-
+#26 voted NO vs. 209 voted YES for impeachment 
 
 
 ```
@@ -58,11 +61,9 @@ You'll want to ensure you do the grouping on both columns together, e.g. `group_
 ```{r}
 
 
-
-
-
-
-
+impeach %>% 
+  group_by(for_impeachment, gdp_above_national) %>% 
+  summarise(n())
 
 
 
@@ -73,12 +74,9 @@ You'll want to ensure you do the grouping on both columns together, e.g. `group_
 ```{r}
 
 
-
-
-
-
-
-
+impeach %>% 
+  group_by(for_impeachment, pct_bachelors_compared_to_national) %>% 
+  summarise(n())
 
 
 ```
