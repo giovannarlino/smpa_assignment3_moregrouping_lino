@@ -135,11 +135,13 @@ impeach %>%
 
 ```{r}
 
-  
+#Show the median percentage of the votes that Clinton received for districts that favored vs. were against the impeachment 
 
+ impeach %>% 
+  group_by(for_impeachment) %>%  
+  summarise(median(clinton_percent))
 
-
-
+# 46.5% of Clinton votes were against the impeachment and 60.2% were in favor of it
 
 
 
