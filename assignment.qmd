@@ -65,6 +65,7 @@ impeach %>%
   group_by(for_impeachment, gdp_above_national) %>% 
   summarise(n())
 
+# By grouping both those who are in favor and against impeachment and the gdp above or below national measures I was able to summarise the count correlating both factors as showed in the table below 
 
 
 ```
@@ -78,6 +79,8 @@ impeach %>%
   group_by(for_impeachment, pct_bachelors_compared_to_national) %>% 
   summarise(n())
 
+# By grouping both those who are in favor and against impeachment and whether the district is above or below the national average the percentage of college graduates,I was able to summarise the count correlating both factors as showed in the table below 
+
 
 ```
 
@@ -90,11 +93,11 @@ In other words, you want to end up with the calculated mean for what that percen
 ```{r}
 
 
+impeach %>% 
+  group_by(for_impeachment) %>% 
+  summarise(average = mean(pct_bachelors)) 
 
-
-
-
-
+# Approx. the average 33.7% of college grads are in favor of impeachment and 27.65% are not 
 
 
 ```
@@ -106,11 +109,11 @@ The relevant column for that is `trump_percent`.
 
 
 
+impeach %>% 
+  group_by(for_impeachment) %>% 
+  summarise(average = mean(trump_percent)) 
 
-
-
-
-
+# Approx. the average 32% of districts at which Trump received a vote are in favor of impeachment and 43.8% are not 
 
 
 ```
@@ -119,13 +122,12 @@ The relevant column for that is `trump_percent`.
 
 ```{r}
 
-  
-
-
-
-
-
-
+impeach %>% 
+  filter (for_impeachment == "YES") %>% 
+  group_by(margin_flag_2018) %>% 
+  summarise (n())
+ 
+# 17 people who were in favor of impeachment won their 2018 election by 5 points or less 
 
 ```
 
