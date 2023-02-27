@@ -141,7 +141,7 @@ impeach %>%
   group_by(for_impeachment) %>%  
   summarise(median(clinton_percent))
 
-# 46.5% of Clinton votes were against the impeachment and 60.2% were in favor of it
+# The 46.5% was the median of Clinton votes that were against the impeachment and 60.2% were the median that was in favor of it
 
 
 
@@ -154,12 +154,10 @@ Use the mutate() function to create two new columns: one that extracts the year 
 ```{r}
 
   
+impeach %>% 
+  mutate(year = year(date_announced), month = month(date_announced))
 
-
-
-
-
-
+# 2 new columns were created to extract the year and month of the dates announced 
 
 ```
 
@@ -167,13 +165,13 @@ Use the mutate() function to create two new columns: one that extracts the year 
 
 ```{r}
 
-  
+impeach %>% 
+  filter(for_impeachment == "YES") %>% 
+  mutate(year = year(date_announced), month = month(date_announced)) %>% 
+  group_by(month) %>% 
+  summarise(n())
 
-
-
-
-
-
+#filtered first to have only counted people who supported the impeachment; the data already only includes House of Democrats; and with the mutated columns, I grouped by month and summarised the count for eaach one. 
 
 ```
 
